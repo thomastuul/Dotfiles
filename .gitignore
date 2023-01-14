@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# But not these files...
+!.bash_aliases
+!.bash_logout
+!.bash_profile_
+!.bashrc
+!.dircolors
+!.gitignore
+!.profile
+!.xprofile
+!.Xresources
+!.xsessionrc

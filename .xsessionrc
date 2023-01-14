@@ -1,0 +1,2 @@
+# https://superuser.com/questions/506186/dmenu-doesnt-set-environment-variable-as-per-my-bash-profile-when-running-emac
+export PATH=$PATH:$HOME/.local/share/rofi:$HOME/.local/share/rofi/rofi-translate

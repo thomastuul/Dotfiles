@@ -1,0 +1,8 @@
+# .bash_profile
+# is read and executed when Bash is invoked
+# as an interactive login shell
+
+# as rank of .bash_profile is higher than of .bashrc
+# this is disabled by postfixed '_'
+
+# if this config file is disabled .profile is used instead
