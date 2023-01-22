@@ -18,6 +18,10 @@ shopt -s checkwinsize   # checks term size when bash regains control
 shopt -s cmdhist        # save multi-line commands in history as single line
 shopt -s cdspell        # autocorrects cd misspellings
 
+set -o vi               # use vi keybindings instead of emacs keybindings (readline)
+# ctrl-l has been missed since vi instead emacs keybindings are used
+bind -m vi-insert "\C-l":clear-screen
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5000
 HISTFILESIZE=5000
