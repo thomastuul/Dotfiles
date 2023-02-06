@@ -19,6 +19,11 @@ shopt -s cmdhist        # save multi-line commands in history as single line
 shopt -s cdspell        # autocorrects cd misspellings
 
 set -o vi               # use vi keybindings instead of emacs keybindings (readline)
+
+bind "set colored-completion-prefix on"
+bind "set colored-stats on"
+bind "set completion-ignore-case on" # enable case-insensitive tab completion
+
 # ctrl-l has been missed since vi instead emacs keybindings are used
 bind -m vi-insert "\C-l":clear-screen
 
@@ -28,7 +33,6 @@ HISTFILESIZE=5000
 
 export HISTTIMEFORMAT="%H:%M:%S "
 export HISTIGNORE="ls:history"
-
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -50,12 +54,12 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -152,8 +156,8 @@ fi
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
 export BROWSER="/usr/bin/brave-browser"
-
 export READER="/usr/bin/zathura"
+export OPENER="xdg-open" # needed by lf
 
 # https://wiki.archlinux.org/title/HiDPI
 #export QT_AUTO_SCREEN_SCALE_FACTOR=1
@@ -163,3 +167,19 @@ export READER="/usr/bin/zathura"
 #export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 ### "vim" as manpager
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
+LFCD="$HOME/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+    bind '"\C-o":"lfcd\C-m"'
+fi
+
+eval "$(fasd --init auto)"
+
+alias lf="lfcd"
+
+source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
+bind -x '"\t": fzf_bash_completion'
+
+source $HOME/.config/broot/launcher/bash/br
+bind -x '"\C-b": br'
