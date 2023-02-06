@@ -1,7 +1,7 @@
 ## -----------------------------------------------------------------------------------------
 ## Created by Vivek Gite <vivek@nixcraft.com>
 ## See for more info: http://www.cyberciti.biz/tips/linux-unix-osx-bash-shell-aliases.html
-## Note: I work a lot with Amazon EC2/CDN/Akamai/Server Backups etc so source code of those 
+## Note: I work a lot with Amazon EC2/CDN/Akamai/Server Backups etc so source code of those
 ## scripts not included in this file. YMMV.
 ## -----------------------------------------------------------------------------------------
 if [ "$TERM" != "linux" ]; then
@@ -12,6 +12,7 @@ fi
 alias ll='ls -l'
 alias la='ls -a'
 alias lt='ls --tree'
+alias dir='ls'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
