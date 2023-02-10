@@ -9,10 +9,12 @@ if [ "$TERM" != "linux" ]; then
 else
     alias ls='lsd --icon never'
 fi
+
+if [ -f $HOME/.config/bash/ls.aliases.sh ]; then
+    source $HOME/.config/bash/ls.aliases.sh
+fi
+
 alias ll='ls -l'
-alias la='ls -a'
-alias lt='ls --tree'
-alias dir='ls'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'

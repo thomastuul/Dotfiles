@@ -171,15 +171,18 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
-    bind '"\C-o":"lfcd\C-m"'
+    bind -x '"\C-o": lfcd'
+    alias lf="lfcd"
 fi
 
 eval "$(fasd --init auto)"
 
-alias lf="lfcd"
+if [ -f "$HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh" ]; then
+    source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
+    bind -x '"\t": fzf_bash_completion'
+fi
 
-source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
-bind -x '"\t": fzf_bash_completion'
-
-source $HOME/.config/broot/launcher/bash/br
-bind -x '"\C-b": br'
+if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
+    source $HOME/.config/broot/launcher/bash/br
+    bind -x '"\C-b": br'
+fi
