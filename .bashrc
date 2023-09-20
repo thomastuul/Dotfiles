@@ -27,9 +27,12 @@ bind "set completion-ignore-case on" # enable case-insensitive tab completion
 # ctrl-l has been missed since vi instead emacs keybindings are used
 bind -m vi-insert "\C-l":clear-screen
 
+# enabling search forward (ctrl-s)
+stty -ixon
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5000
-HISTFILESIZE=5000
+HISTSIZE=10000
+HISTFILESIZE=10000
 
 export HISTTIMEFORMAT="%H:%M:%S "
 export HISTIGNORE="ls:history"
@@ -186,3 +189,5 @@ if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
     source $HOME/.config/broot/launcher/bash/br
     bind -x '"\C-b": br'
 fi
+
+source /home/thomas/.config/broot/launcher/bash/br
