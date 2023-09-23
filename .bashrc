@@ -174,7 +174,7 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
-    bind -x '"\C-o": lfcd'
+    bind '"\C-o":"lfcd\C-m"'
     alias lf="lfcd"
 fi
 
