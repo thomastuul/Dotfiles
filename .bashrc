@@ -189,5 +189,3 @@ if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
     source $HOME/.config/broot/launcher/bash/br
     bind -x '"\C-b": br'
 fi
-
-source /home/thomas/.config/broot/launcher/bash/br
