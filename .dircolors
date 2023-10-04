@@ -199,9 +199,9 @@ EXEC 01;31  # Unix
 ### Text formats
 
 # Text that we can edit with a regular editor
-.txt 32
-.org 32
-.md 32
+.txt 01;38
+.org 34
+.md 36
 .mkd 32
 
 # Source text
@@ -252,7 +252,7 @@ EXEC 01;31  # Unix
 .n 32
 .p 32
 .pod 32
-.tex 32
+.tex 01;32
 
 ### Multimedia formats
 
@@ -260,7 +260,7 @@ EXEC 01;31  # Unix
 .bmp 33
 .cgm 33
 .dl 33
-.dvi 33
+.dvi 01;37
 .emf 33
 .eps 33
 .gif 33
@@ -270,13 +270,13 @@ EXEC 01;31  # Unix
 .mng 33
 .pbm 33
 .pcx 33
-.pdf 33
+.pdf 01;37
 .pgm 33
 .png 33
 .ppm 33
 .pps 33
 .ppsx 33
-.ps 33
+.ps 01;37
 .svg 33
 .svgz 33
 .tga 33
@@ -290,19 +290,19 @@ EXEC 01;31  # Unix
 .yuv 33
 
 # Audio
-.aac 33
-.au  33
-.flac 33
-.mid 33
-.midi 33
-.mka 33
-.mp3 33
-.mpa 33
-.mpeg 33
-.mpg 33
-.ogg  33
-.ra 33
-.wav 33
+.aac 01;36
+.au  01;36
+.flac 01;36
+.mid 01;36
+.midi 01;36
+.mka 01;36
+.mp3 01;36
+.mpa 01;36
+.mpeg 01;36
+.mpg 01;36
+.ogg  01;36
+.ra 01;36
+.wav 01;36
 
 # Video
 .anx 33
@@ -335,8 +335,9 @@ EXEC 01;31  # Unix
 ### Misc
 
 # Binary document formats and multimedia source
-.doc 31
-.docx 31
+.doc 01;34
+.docx 01;34
+.odt 34
 .rtf 31
 .dot 31
 .dotx 31
@@ -400,7 +401,7 @@ EXEC 01;31  # Unix
 # Unimportant text files
 # For universal scheme, use brightgreen 01;32
 # For optimal on light bg (but too prominent on dark bg), use white 01;34
-.log 01;32
+.log 00
 *~ 01;32
 *# 01;32
 #.log 01;34
@@ -441,9 +442,8 @@ EXEC 01;31  # Unix
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
 # custom file type
-.gpg 34
-.gpg 34
-.pgp 34
+.gpg 01;30
+.pgp 01;30
 .asc 34
 .3des 34
 .aes 34
