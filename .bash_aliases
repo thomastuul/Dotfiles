@@ -5,9 +5,9 @@
 ## scripts not included in this file. YMMV.
 ## -----------------------------------------------------------------------------------------
 if [ "$TERM" != "linux" ]; then
-    alias ls='lsd'
+    alias ls='lsd --group-directories-first'
 else
-    alias ls='lsd --icon never'
+    alias ls='lsd --group-directories-first --icon never'
 fi
 
 if [ -f $HOME/.config/bash/ls.aliases.sh ]; then
