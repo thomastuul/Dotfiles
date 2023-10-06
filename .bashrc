@@ -147,14 +147,21 @@ if [ -d "$HOME/.cargo/bin" ] ; then
 fi
 
 ### SETTING THE STARSHIP PROMPT ###
-#if [ "$TERM" != "linux" ]; then
-    eval "$(starship init bash)"
-#fi
+
+if command -v starship &> /dev/null
+then
+    #if [ "$TERM" != "linux" ]; then
+        eval "$(starship init bash)"
+    #fi
+fi
+
 
 # Added neofetch when opening a terminal
-#if [ -f /usr/bin/neofetch ]; then
+#if command -v neofetch &> /dev/null
+#then
 #    neofetch
 #fi
+
 
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
