@@ -185,7 +185,9 @@ if [ -f "$LFCD" ]; then
     alias lf="lfcd"
 fi
 
-eval "$(fasd --init auto)"
+if command -v fasd &> /dev/null; then
+    eval "$(fasd --init auto)"
+fi
 
 if [ -f "$HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh" ]; then
     source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh

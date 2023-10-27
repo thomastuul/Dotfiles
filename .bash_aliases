@@ -4,10 +4,13 @@
 ## Note: I work a lot with Amazon EC2/CDN/Akamai/Server Backups etc so source code of those
 ## scripts not included in this file. YMMV.
 ## -----------------------------------------------------------------------------------------
-if [ "$TERM" != "linux" ]; then
-    alias ls='lsd --group-directories-first'
-else
-    alias ls='lsd --group-directories-first --icon never'
+
+if command -v lsd &> /dev/null; then
+    if [ "$TERM" != "linux" ]; then
+        alias ls='lsd --group-directories-first'
+    else
+        alias ls='lsd --group-directories-first --icon never'
+    fi
 fi
 
 if [ -f $HOME/.config/bash/ls.aliases.sh ]; then
@@ -65,3 +68,5 @@ alias ip="ip -color=auto"
 alias feh="feh --conversion-timeout 5"
 alias ncdu="ncdu --color dark"
 alias git-tree="git ls-tree --full-tree -r HEAD"
+alias tree="ls --tree"
+alias lt="ls --tree"
