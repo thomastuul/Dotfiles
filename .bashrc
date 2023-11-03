@@ -10,7 +10,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-HISTCONTROL=ignoredups:erasedups        # no duplicate entries
+# no duplicate entries, ignore lines begin with space
+HISTCONTROL=ignoredups:erasedups:ignorespace
 
 ### SHOPT
 shopt -s histappend     # do not overwrite history
@@ -147,9 +148,7 @@ if [ -d "$HOME/.cargo/bin" ] ; then
 fi
 
 ### SETTING THE STARSHIP PROMPT ###
-
-if command -v starship &> /dev/null
-then
+if command -v starship &> /dev/null; then
     #if [ "$TERM" != "linux" ]; then
         eval "$(starship init bash)"
     #fi
@@ -178,6 +177,7 @@ export OPENER="xdg-open" # needed by lf
 ### "vim" as manpager
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
+# LF (List File filemanager) opens at shortcut and stays at changed path after exit
 LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
@@ -185,16 +185,26 @@ if [ -f "$LFCD" ]; then
     alias lf="lfcd"
 fi
 
-if command -v fasd &> /dev/null; then
-    eval "$(fasd --init auto)"
+# fasd - quick access to files and directories, see https://github.com/clvv/fasd/tree/master
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
+source "$fasd_cache"
+unset fasd_cache
 
-if [ -f "$HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh" ]; then
-    source $HOME/.fzf-tab-completion/bash/fzf-bash-completion.sh
-    bind -x '"\t": fzf_bash_completion'
-fi
-
+# https://github.com/Canop/broot
 if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
     source $HOME/.config/broot/launcher/bash/br
     bind -x '"\C-b": br'
+fi
+
+# use fzf for tab-completion: <tab>
+#             history search: ctrl+r
+#             file search:    ctrl+t
+#             string search:  ctrl+f
+#             cd into directory: alt+c
+#             fuzzy auto completion: **
+if [ -f "$HOME/.config/bash/fzf.bash" ]; then
+    source $HOME/.config/bash/fzf.bash
 fi
