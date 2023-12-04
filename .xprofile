@@ -3,3 +3,5 @@
 if [ -x /usr/bin/numlockx ]; then
      /usr/bin/numlockx on
 fi
+
+export PATH=~/.local/share/rofi/rofi-translate:$PATH

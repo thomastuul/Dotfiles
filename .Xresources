@@ -4,7 +4,8 @@
 ! or
 ! $ cat ~/.Xresources | xrdb
 
-Xft.dpi: 96 
+! Xft.dpi: 96
+Xft.dpi: 140
 URxvt.font: xft:JetBrainsMono Nerd Font Mono:size=14
 URxvt.boldFont: xft:JetBrainsMono Nerd Font Mono:size=14
 URxvt.scrollBar: false

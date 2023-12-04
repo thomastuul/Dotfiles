@@ -175,7 +175,7 @@ export OPENER="xdg-open" # needed by lf
 ### "bat" as manpager
 #export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 ### "vim" as manpager
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma|:IndentLinesDisable' -\""
 
 # LF (List File filemanager) opens at shortcut and stays at changed path after exit
 LFCD="$HOME/.config/lf/lfcd.sh"
@@ -188,7 +188,7 @@ fi
 # fasd - quick access to files and directories, see https://github.com/clvv/fasd/tree/master
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
 source "$fasd_cache"
 unset fasd_cache
