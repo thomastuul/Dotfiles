@@ -85,37 +85,37 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
+# "$HOME/.bash_aliases", instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
 fi
 
 # https://wiki.ubuntuusers.de/Paketverwaltung/Tipps/
-function apt-history(){
+apt-history() {
       case "$1" in
         install)
               cat /var/log/{dpkg.log,dpkg.log.1} | grep 'install '
               ;;
         upgrade|remove)
-              cat /var/log/{dpkg.log,dpkg.log.1} | grep $1
+              cat /var/log/{dpkg.log,dpkg.log.1} | grep "$1"
               ;;
         rollback)
               cat /var/log/{dpkg.log,dpkg.log.1} | grep upgrade | \
@@ -187,7 +187,7 @@ fi
 
 # fasd - quick access to files and directories, see https://github.com/clvv/fasd/tree/master
 fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+if [ "$(command -v fasd)" -nt "$fasd_cache" ] || [ ! -s "$fasd_cache" ]; then
     fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
 source "$fasd_cache"
@@ -195,7 +195,7 @@ unset fasd_cache
 
 # https://github.com/Canop/broot
 if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
-    source $HOME/.config/broot/launcher/bash/br
+    source "$HOME/.config/broot/launcher/bash/br"
     bind -x '"\C-b": br'
 fi
 
@@ -206,5 +206,15 @@ fi
 #             cd into directory: alt+c
 #             fuzzy auto completion: **
 if [ -f "$HOME/.config/bash/fzf.bash" ]; then
-    source $HOME/.config/bash/fzf.bash
+    source "$HOME/.config/bash/fzf.bash"
 fi
+
+#if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+#	unset LS_COLORS
+#	export TERM=xterm-mono
+#	export NO_COLOR=1
+#	alias ll="ls -alF"
+#	PS1="\W \$ "
+#else
+#	eval "$(starship init bash)"
+#fi
