@@ -1,11 +1,10 @@
-# _____ _                                 _____           _
-#|_   _| |                               |_   _|         | |
-#  | | | |__   ___  _ __ ___   __ _ ___    | |_   _ _   _| |
-#  | | | '_ \ / _ \| '_ ` _ \ / _` / __|   | | | | | | | | |
-#  | | | | | | (_) | | | | | | (_| \__ \   | | |_| | |_| | |
-#  \_/ |_| |_|\___/|_| |_| |_|\__,_|___/   \_/\__,_|\__,_|_|
 #
-# My bash config. Not much to see here.
+#   ██████╗  █████╗ ███████╗██╗  ██╗██████╗  ██████╗
+#   ██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔════╝
+#   ██████╔╝███████║███████╗███████║██████╔╝██║
+#   ██╔══██╗██╔══██║╚════██║██╔══██║██╔══██╗██║
+#██╗██████╔╝██║  ██║███████║██║  ██║██║  ██║╚██████╗
+#╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -186,12 +185,14 @@ if [ -f "$LFCD" ]; then
 fi
 
 # fasd - quick access to files and directories, see https://github.com/clvv/fasd/tree/master
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" ] || [ ! -s "$fasd_cache" ]; then
-    fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+if [ "$(command -v fasd)" ]; then
+    fasd_cache="$HOME/.fasd-init-bash"
+    if [ "$(command -v fasd)" -nt "$fasd_cache" ] || [ ! -s "$fasd_cache" ]; then
+        fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+    fi
+    source "$fasd_cache"
+    unset fasd_cache
 fi
-source "$fasd_cache"
-unset fasd_cache
 
 # https://github.com/Canop/broot
 if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
