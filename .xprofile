@@ -8,7 +8,7 @@ export PATH=~/.local/share/rofi/rofi-translate:$PATH
 
 # xsecurelock options
 export XSECURELOCK_SAVER=saver_mpv
-export XSECURELOCK_LIST_VIDEOS_COMMAND="ls /home/thomas/Videos/GLMatrix.webm"
+export XSECURELOCK_LIST_VIDEOS_COMMAND="ls ~/Videos/GLMatrix.webm"
 export XSECURELOCK_SHOW_DATETIME=1
 export XSECURELOCK_SINGLE_AUTH_WINDOW=1
 export XSECURELOCK_AUTH_TIMEOUT=10

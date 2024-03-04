@@ -31,8 +31,8 @@ bind -m vi-insert "\C-l":clear-screen
 stty -ixon
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=10000
+HISTSIZE=20000
+HISTFILESIZE=20000
 
 export HISTTIMEFORMAT="%H:%M:%S "
 export HISTIGNORE="ls:history"
@@ -174,11 +174,14 @@ export OPENER="xdg-open" # needed by lf
 ### "bat" as manpager
 #export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 ### "vim" as manpager
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma|:IndentLinesDisable' -\""
+if [ "$(command -v vim)" ]; then
+    export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma|:IndentLinesDisable' -\""
+fi
 
 # LF (List File filemanager) opens at shortcut and stays at changed path after exit
 LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
+    # shellcheck source=.config/lf/lfcd.sh
     source "$LFCD"
     bind '"\C-o":"lfcd\C-m"'
     alias lf="lfcd"
@@ -190,6 +193,7 @@ if [ "$(command -v fasd)" ]; then
     if [ "$(command -v fasd)" -nt "$fasd_cache" ] || [ ! -s "$fasd_cache" ]; then
         fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
     fi
+    # shellcheck source=.fasd-init-bash
     source "$fasd_cache"
     unset fasd_cache
 fi

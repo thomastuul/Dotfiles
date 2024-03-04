@@ -1,0 +1,4 @@
+[submodule "bash"]
+	path = bash
+	url = git@github.com:thomastuul/bash.git
+	update = merge
