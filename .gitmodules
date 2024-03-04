@@ -1,4 +1,4 @@
 [submodule "bash"]
 	path = .config/bash
-	url = git@github.com:thomastuul/bash.git
+	url = ../bash.git
 	update = merge
