@@ -136,7 +136,7 @@ INITIAL_QUERY="${*:-}"
     --prompt '1. ripgrep> ' \
     --delimiter : \
     --header '╱ CTRL-R (ripgrep mode) ╱ CTRL-F (fzf mode) ╱' \
-    --preview 'bat --color=always {1} --highlight-line {2}' \
+    --preview 'batcat --color=always {1} --highlight-line {2}' \
     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
     --bind 'enter:become(vim {1} +{2})'
 ```
