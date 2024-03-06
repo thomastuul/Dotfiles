@@ -1,6 +1,6 @@
 ## -----------------------------------------------------------------------------------------
 ## Created by Vivek Gite <vivek@nixcraft.com>
-## See for more info: http://www.cyberciti.biz/tips/linux-unix-osx-bash-shell-aliases.html
+## See for more info: https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
 ## Note: I work a lot with Amazon EC2/CDN/Akamai/Server Backups etc so source code of those
 ## scripts not included in this file. YMMV.
 ## -----------------------------------------------------------------------------------------
@@ -13,8 +13,9 @@ if command -v lsd &> /dev/null; then
     fi
 fi
 
-if [ -f $HOME/.config/bash/ls.aliases.sh ]; then
-    source $HOME/.config/bash/ls.aliases.sh
+if [ -f "$HOME"/.config/bash/ls.aliases.sh ]; then
+    # shellcheck source=/home/thomas/.config/bash/ls.aliases.sh
+    source "$HOME"/.config/bash/ls.aliases.sh
 fi
 
 alias ll='ls -l'
@@ -58,7 +59,7 @@ alias gs='git status'
 alias gd='git diff'
 alias cat='batcat --theme Dracula'
 alias fd='fdfind'
-alias cool=$HOME/.local/bin/cool
+alias cool='$HOME'/.local/bin/cool
 alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
 alias cp="cp -iv"
@@ -70,3 +71,5 @@ alias ncdu="ncdu --color dark"
 alias git-tree="git ls-tree --full-tree -r HEAD"
 alias tree="ls --tree"
 alias lt="ls --tree"
+alias cryptmount="gocryptfs -config ~/.config/gocryptfs/crypt.conf ~/.Privat ~/Privat"
+alias cryptunmount="fusermount -u ~/Privat"

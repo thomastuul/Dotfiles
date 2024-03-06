@@ -34,9 +34,57 @@ These dotfiles are a combination of several sources and suggestions of
 >
 > There is no need to install the entire repository. Also you do not need to install every suggested application. Just begin with picking the `.bashrc`.
 ### Installing dot-files
-Check out a clone of this repo to your home path:
+#### Check out a clone of this repo to your home path:
 ```bash
 cd ~
 https://github.com/thomastuul/Dotfiles.git
 ```
-Creates the Folder `Dotfiles`.
+Creates the Folder `Dotfiles`.  
+cd into it and delete git-files:  
+```bash
+cd Dotfiles
+rm -rf .git
+```
+Copy entire content to `~`:  
+```bash
+cp -R .* ~
+cd ~
+rm -rf Dotfiles
+```
+with sourcing the `.bashrc` you should see the new configuration:
+```bash
+source .bashrc
+```
+
+#### For the best possible magnificence install following packages:
+- fzf
+- bat
+- fasd
+- broot
+- lf
+- bash-completion
+- ripgrep
+- starship  
+```bash
+sudo apt install fzf bat fasd lf bash-completion ripgrep
+```
+
+##### Installing `broot`, see [Personnal Azlux's repository](https://packages.azlux.fr/):  
+```bash
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ stable main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+# check integrity of key:
+gpg --show-keys --with-fingerprint /usr/share/keyrings/azlux-archive-keyring.gpg
+# fingerprint: 98B8 24A5 FA7D 3A10 FDB2 25B7 CA54 8A0A 0312 D8E6
+```
+
+
+Tweaking `fzf`:  
+```bash
+curl https://raw.githubusercontent.com/junegunn/fzf/master/shell/	completion.bash --output completion.bash
+```
+
+
+
+
+
