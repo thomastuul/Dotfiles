@@ -1,4 +1,0 @@
-[submodule "bash"]
-	path = .config/bash
-	url = ../bash.git
-	update = merge
