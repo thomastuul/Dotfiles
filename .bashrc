@@ -128,10 +128,16 @@ apt-history() {
       esac
 }
 
-# https://linux-club.de/wiki/opensuse/Farbe_in_der_Konsole
+# https://linupedia.org/opensuse/Farbe_in_der_Konsole
 # Farbiger Errorlevel im Prompt
-PROMPT_COMMAND='LASTERROR="[$?]" ; test "$LASTERROR" = "[0]" || echo -ne "\033[93;41m${LASTERROR}\033[0m"'
-export PROMPT_COMMAND
+prompt_command() {
+    LASTERROR="[$?]"
+    if [[ ${LASTERROR} != "[0]" ]]; then
+        echo -ne "\033[93;41m${LASTERROR}\033[0m"
+    fi
+}
+
+PROMPT_COMMAND=prompt_command
 
 ### PATH
 if [ -d "$HOME/.bin" ] ; then
@@ -148,18 +154,8 @@ fi
 
 ### SETTING THE STARSHIP PROMPT ###
 if command -v starship &> /dev/null; then
-    #if [ "$TERM" != "linux" ]; then
         eval "$(starship init bash)"
-    #fi
 fi
-
-
-# Added neofetch when opening a terminal
-#if command -v neofetch &> /dev/null
-#then
-#    neofetch
-#fi
-
 
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
@@ -200,6 +196,7 @@ fi
 
 # https://github.com/Canop/broot
 if [ -f "$HOME/.config/broot/launcher/bash/br" ]; then
+    # shellcheck source=.config/broot/launcher/bash/br
     source "$HOME/.config/broot/launcher/bash/br"
     bind -x '"\C-b": br'
 fi
@@ -213,13 +210,3 @@ fi
 if [ -f "$HOME/.config/bash/fzf.bash" ]; then
     source "$HOME/.config/bash/fzf.bash"
 fi
-
-#if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-#	unset LS_COLORS
-#	export TERM=xterm-mono
-#	export NO_COLOR=1
-#	alias ll="ls -alF"
-#	PS1="\W \$ "
-#else
-#	eval "$(starship init bash)"
-#fi
