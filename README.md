@@ -111,7 +111,7 @@ rm starship-x86*
 ```bash
 mkdir ~/.config/fzf
 cd !$
-curl https://raw.githubusercontent.com/junegunn/fzf/master/shell/	completion.bash --output completion.bash
+curl https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.bash --output completion.bash
 ```
 
 Installation of fzf-tab-completion:
