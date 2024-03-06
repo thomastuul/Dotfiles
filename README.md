@@ -37,7 +37,7 @@ These dotfiles are a combination of several sources and suggestions of
 Check out a clone of this repo to your home path:
 ```bash
 cd ~
-https://github.com/thomastuul/Dotfiles.git
+git clone https://github.com/thomastuul/Dotfiles.git
 ```
 Creates the Folder `Dotfiles`.  
 cd into it and delete git-files:  
