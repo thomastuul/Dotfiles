@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+sound="/usr/share/sounds/freedesktop/stereo/complete.oga"
+
+if command -v pw-play >/dev/null 2>&1 && [[ -f "$sound" ]]; then
+    pw-play "$sound" >/dev/null 2>&1
+elif command -v paplay >/dev/null 2>&1 && [[ -f "$sound" ]]; then
+    paplay "$sound" >/dev/null 2>&1
+else
+    printf '\a' >/dev/tty
+fi
