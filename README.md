@@ -11,6 +11,13 @@ These dotfiles are a combination of several sources and suggestions of
 * The cross shell prompt [starship](https://starship.rs/)
 * [Dracula Theme](https://github.com/dracula/dracula-theme)
 
+## Repository branches
+
+Screenshots used by this README are stored on the orphan `assets` branch so
+regular clones of `master` do not download files that are only needed for the
+GitHub presentation. The `assets` branch has intentionally unrelated history
+and must not be merged into `master`.
+
 ## Examples
 
 | <b>```l```<b>                                                                |
@@ -146,5 +153,4 @@ touch ~/.config/fzf/rfv
 # copy above example into file...
 chmod +x ~/.config/fzf/rfv
 ```
-
 
