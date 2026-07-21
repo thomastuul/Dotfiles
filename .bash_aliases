@@ -9,7 +9,7 @@ if command -v lsd &> /dev/null; then
     if [ "$TERM" != "linux" ]; then
         alias ls='lsd --group-directories-first'
     else
-        alias ls='lsd --group-directories-first --icon never'
+        alias ls='lsd --group-directories-first --icon never --ignore-config'
     fi
 fi
 
@@ -29,7 +29,7 @@ alias mount='mount |column -t'
 alias h='history'
 alias j='jobs -l'
 alias path='echo -e ${PATH//:/\\n}'
-alias now='date +"%T'
+alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias ping='ping -c 5'
@@ -57,7 +57,7 @@ alias music='ncmpc'
 alias musicpp='ncmpcpp'
 alias gs='git status'
 alias gd='git diff'
-alias cat='batcat --theme Dracula'
+! hash batcat 2>/dev/null || alias cat='batcat --theme Dracula'
 alias fd='fdfind'
 alias cool='$HOME'/.local/bin/cool
 alias yt="yt-dlp --embed-metadata -i"
@@ -73,3 +73,5 @@ alias tree="ls --tree"
 alias lt="ls --tree"
 alias cryptmount="gocryptfs -config ~/.config/gocryptfs/crypt.conf ~/.Privat ~/Privat"
 alias cryptunmount="fusermount -u ~/Privat"
+# https://www.atlassian.com/git/tutorials/dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
