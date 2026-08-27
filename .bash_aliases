@@ -1,5 +1,6 @@
 ## -----------------------------------------------------------------------------------------
 ## Created by Vivek Gite <vivek@nixcraft.com>
+## Extended by Thomas Tuul, see https://github.com/thomastuul/Dotfiles.git
 ## See for more info: https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
 ## Note: I work a lot with Amazon EC2/CDN/Akamai/Server Backups etc so source code of those
 ## scripts not included in this file. YMMV.
@@ -64,7 +65,15 @@ alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt -x -f bestaudio/best"
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -vI"
+rm() {
+    if [[ ! -x /usr/bin/trash-put ]]; then
+        printf 'rm: /usr/bin/trash-put fehlt; nichts wurde gelöscht.\n' >&2
+        printf 'Zum endgültigen Löschen ausdrücklich /usr/bin/rm verwenden.\n' >&2
+        return 127
+    fi
+
+    /usr/bin/trash-put "$@"
+}
 alias ip="ip -color=auto"
 alias feh="feh --conversion-timeout 5"
 alias ncdu="ncdu --color dark"
